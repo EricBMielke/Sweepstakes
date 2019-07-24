@@ -8,5 +8,14 @@ namespace Sweepstakes
 {
     class MarketingFirm
     {
+        ISweepstakesManager sweepstakesManager;
+        public void InsertSweepstakes(ISweepstakesManager sweepstakesManager)
+        {
+            this.sweepstakesManager = sweepstakesManager; 
+        }
+        public Sweepstakes GetSweepstakes()
+        {
+            return sweepstakesManager.GetSweepstakes();
+        }
     }
 }
