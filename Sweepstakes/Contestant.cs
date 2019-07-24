@@ -13,6 +13,7 @@ namespace Sweepstakes
         private int registrationNumber;
         private string emailAddress;
 
+        Contestant contestant = new Contestant();
         public string FirstName
         {
             get
@@ -56,6 +57,17 @@ namespace Sweepstakes
             {
                 emailAddress = value;
             }
+        }
+        public void GetContestant(Contestant contestant)
+        {
+            Console.WriteLine("What is your first name?");
+            contestant.FirstName = Console.ReadLine();
+            Console.WriteLine("What is your last name?");
+            contestant.LastName = Console.ReadLine();
+            Console.WriteLine("What is your email");
+            contestant.EmailAddress = Console.ReadLine();
+            Console.WriteLine("What is your phone number");
+            contestant.RegistrationNumber = Convert.ToInt32(Console.ReadLine());
         }
 
 
