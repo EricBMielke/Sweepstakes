@@ -8,40 +8,74 @@ namespace Sweepstakes
 {
     class Sweepstakes
     {
-        Dictionary<string, string> contestant = new Dictionary<string, string>();
+        Dictionary<string, string> contestantDict = new Dictionary<string, string>();
+        Contestant contestant = new Contestant();
+
         public string contestantAge;
         public int contestantCount = 0;
         public string[] allCustomerData;
+        public string Name;
+
+        public void RunGame()
+        {
+            string userName = GetName(Name);
+            string userAge = Sweepstake(userName);
+            contestant.GetInfo();
+            RegisterContestant(contestant);
+
+        }
+        public string GetName(string Name)
+        {
+            Console.WriteLine("Hello, what is your name?");
+            Name = Console.ReadLine();
+            return Name;
+        }
         public string Sweepstake(string Name)
         {
             Console.WriteLine("Good morning" + Name + "You must be 18 to enter the sweepstakes. Please acknowledge this by typing 'yes'.");
             contestantAge  = Console.ReadLine();
-            contestant.Add("Age", contestantAge);
             contestantCount++;
             return contestantAge;
         }
 
         public void RegisterContestant(Contestant contestant)
         {
-
+            AddUserToData(contestant, contestantCount);
         }
         public void AddUserToData(Contestant contestant, int contestantCount)
         {
-            var allCustomerData = new[] { 
-            new { Num = contestantCount, Details = new[] { 
-                new {KeyChar = '1', StringValue = contestant.FirstName} , 
-                new {KeyChar = '2', StringValue = contestant.LastName} ,
-                new {KeyChar = '3', StringValue = contestant.EmailAddress} ,
-                new {KeyChar = '4', StringValue = contestant.RegistrationNumber} }
-            } };
+            contestantDict.Add("Contestant Number", contestantCount.ToString());
+            contestantDict.Add("First Name", contestant.FirstName);
+            contestantDict.Add("Last Name", contestant.LastName);
+            contestantDict.Add("Email", contestant.EmailAddress);
+            contestantDict.Add("RegistrationNumber", contestant.RegistrationNumber);
+
         }
-        public string PickWinner()
+        public int PickWinner()
         {
-            return "foo";
+            Random rnd = new Random();
+            int sweepstakesWinner = rnd.Next(1, contestantCount);
+            return sweepstakesWinner;
         }
+        //public void AlertWinner(int sweepstakesWinner)
+        //{
+
+        //    for (int i = 0; i < contestantCount; i++)
+        //    {
+        //        contestantCount.ToString();
+        //        if(contestantCount = contestantDict.)
+        //        {
+        //            Console.WriteLine("contest")
+        //        }
+        //        Console.WriteLine("Value of i: {0}", i);
+        //    }
+        //}
         public void PrintContestantInfo(Contestant contestant)
         {
-
+            Console.WriteLine("First Name: " + contestant.FirstName);
+            Console.WriteLine("Last Name: " + contestant.LastName);
+            Console.WriteLine("Email Address: " + contestant.EmailAddress);
+            Console.WriteLine("Registration Number: " + contestant.RegistrationNumber);
         }
 
     }
