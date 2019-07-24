@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MailKit.Net.Smtp;
+using MailKit;
+using MimeKit;
 
 namespace Sweepstakes
 {
@@ -89,6 +92,29 @@ namespace Sweepstakes
             GetRegistrationNumber();
         }
 
+        public void EmailWinner()
+        {
+            {
+                var message = new MimeMessage();
+                message.From.Add(new MailboxAddress("The Head Honcho", "BigWinner@TheMarketingFirm.Com"));
+                message.To.Add(new MailboxAddress(contestant.FirstName + " " + contestant.LastName, contestant.EmailAddress));
+                message.Subject = "You are the winner";
+
+                message.Body = new TextPart("plain")
+                {
+                    Text = @"Hey,
+
+                    I just wanted to let you know that you won the sweepstakes! Going to Vegas, baby!"
+                };
+
+                using (var client = new SmtpClient())
+                {
+                    client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                    client.Send(message);
+                    client.Disconnect(true);
+                }
+            }
+        }
 
 
     }

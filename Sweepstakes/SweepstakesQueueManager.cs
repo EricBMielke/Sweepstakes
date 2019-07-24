@@ -10,7 +10,6 @@ namespace Sweepstakes
     {
 
         Queue<Sweepstakes> sweepstakesStack = new Queue<Sweepstakes>();
-
         public void InsertSweepstakes(Sweepstakes sweepstakes)
         {
             sweepstakesStack.Enqueue(sweepstakes);

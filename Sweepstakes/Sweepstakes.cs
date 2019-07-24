@@ -13,7 +13,6 @@ namespace Sweepstakes
 
         public string contestantAge;
         public int contestantCount = 0;
-        public string[] allCustomerData;
         public string Name;
 
         public void RunGame()
@@ -55,6 +54,7 @@ namespace Sweepstakes
         {
             Random rnd = new Random();
             int sweepstakesWinner = rnd.Next(1, contestantCount);
+            contestantDict[];
             return sweepstakesWinner;
         }
         //public void AlertWinner(int sweepstakesWinner)
