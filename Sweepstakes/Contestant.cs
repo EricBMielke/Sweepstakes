@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Sweepstakes
 {
-    class Contestant
+    class Contestant : UserInformation
     {
         private string firstName;
         private string lastName;
-        private int registrationNumber;
+        private string registrationNumber;
         private string emailAddress;
 
         Contestant contestant = new Contestant();
@@ -36,7 +36,7 @@ namespace Sweepstakes
                 lastName = value;
             }
         }
-        public int RegistrationNumber
+        public string RegistrationNumber
         {
             get
             {
@@ -58,16 +58,35 @@ namespace Sweepstakes
                 emailAddress = value;
             }
         }
-        public void GetContestant(Contestant contestant)
+        public void GetFirstName()
         {
             Console.WriteLine("What is your first name?");
             contestant.FirstName = Console.ReadLine();
+        }
+        public void GetLastName()
+        {
             Console.WriteLine("What is your last name?");
             contestant.LastName = Console.ReadLine();
-            Console.WriteLine("What is your email");
+        }
+        public void GetEmail()
+        {
+            Console.WriteLine("What is your email?");
             contestant.EmailAddress = Console.ReadLine();
-            Console.WriteLine("What is your phone number");
-            contestant.RegistrationNumber = Convert.ToInt32(Console.ReadLine());
+        }
+        public void GetRegistrationNumber()
+        {
+            Random rnd = new Random();
+            contestant.RegistrationNumber = rnd.Next(1000000).ToString();
+            Console.WriteLine("Your registration number is " + contestant.RegistrationNumber);
+
+        }
+
+        public void GetInfo()
+        {
+            GetFirstName();
+            GetLastName();
+            GetEmail();
+            GetRegistrationNumber();
         }
 
 
