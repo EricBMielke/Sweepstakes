@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Sweepstakes
 {
-    class Sweepstakes
+    public class Sweepstakes
     {
-        Dictionary<string, string> contestantDict = new Dictionary<string, string>();
+        Dictionary<string, Contestant> contestantDict = new Dictionary<string, Contestant>();
         Contestant contestant = new Contestant();
 
         public string contestantAge;
@@ -43,19 +43,19 @@ namespace Sweepstakes
         }
         public void AddUserToData(Contestant contestant, int contestantCount)
         {
-            contestantDict.Add("Contestant Number", contestantCount.ToString());
-            contestantDict.Add("First Name", contestant.FirstName);
-            contestantDict.Add("Last Name", contestant.LastName);
-            contestantDict.Add("Email", contestant.EmailAddress);
-            contestantDict.Add("RegistrationNumber", contestant.RegistrationNumber);
+            contestantDict.Add(contestantCount.ToString(), contestant);
+            contestantDict.Add(contestant.FirstName, contestant);
+            contestantDict.Add(contestant.LastName, contestant);
+            contestantDict.Add(contestant.EmailAddress, contestant);
+            contestantDict.Add(contestant.RegistrationNumber, contestant);
 
         }
-        public int PickWinner()
+        public char PickWinner()
         {
             Random rnd = new Random();
-            int sweepstakesWinner = rnd.Next(1, contestantCount);
-            contestantDict[];
-            return sweepstakesWinner;
+            int sweepstakesWinnerNumber = rnd.Next(1, contestantCount);
+            char sweepStakesWinner = contestant.FirstName[sweepstakesWinnerNumber];
+            return sweepStakesWinner;
         }
         //public void AlertWinner(int sweepstakesWinner)
         //{
@@ -88,7 +88,7 @@ namespace Sweepstakes
     }
     public interface ISweepstakesManager
     {
-        public void InsertSweepstakes(Sweepstakes sweepstakes);
+        void InsertSweepstakes(Sweepstakes sweepstakes);
         Sweepstakes GetSweepstakes();
     }
 }
