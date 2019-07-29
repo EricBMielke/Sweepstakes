@@ -86,9 +86,9 @@ namespace Sweepstakes
         void GetEmail();
         void GetRegistrationNumber();
     }
-    interface ISweepstakesManager
+    public interface ISweepstakesManager
     {
-        void InsertSweepstakes(Sweepstakes sweepstakes);
+        public void InsertSweepstakes(Sweepstakes sweepstakes);
         Sweepstakes GetSweepstakes();
     }
 }

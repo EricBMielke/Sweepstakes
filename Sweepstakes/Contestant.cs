@@ -9,7 +9,7 @@ using MimeKit;
 
 namespace Sweepstakes
 {
-    class Contestant : UserInformation
+    public class Contestant : UserInformation
     {
         private string firstName;
         private string lastName;
