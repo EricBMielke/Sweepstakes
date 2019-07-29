@@ -57,19 +57,7 @@ namespace Sweepstakes
             char sweepStakesWinner = contestant.FirstName[sweepstakesWinnerNumber];
             return sweepStakesWinner;
         }
-        //public void AlertWinner(int sweepstakesWinner)
-        //{
 
-        //    for (int i = 0; i < contestantCount; i++)
-        //    {
-        //        contestantCount.ToString();
-        //        if(contestantCount = contestantDict.)
-        //        {
-        //            Console.WriteLine("contest")
-        //        }
-        //        Console.WriteLine("Value of i: {0}", i);
-        //    }
-        //}
         public void PrintContestantInfo(Contestant contestant)
         {
             Console.WriteLine("First Name: " + contestant.FirstName);
